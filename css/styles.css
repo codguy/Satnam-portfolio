@@ -12836,3 +12836,7 @@ body.dark .subheading {
 .checkbox:checked+.checkbox-label .ball {
   transform: translateX(24px);
 }
+
+section ul > li {
+  margin-bottom: 1.4rem;
+}
