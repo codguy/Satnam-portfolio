@@ -35,5 +35,38 @@ window.addEventListener('DOMContentLoaded', event => {
 
 const checkbox = document.getElementById("checkbox")
 checkbox.addEventListener("change", () => {
-  document.body.classList.toggle("dark")
+    document.body.classList.toggle("dark")
 })
+
+
+function getDateDifference(date1, date2) {
+    var oneDay = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
+    var diffDays = Math.round(Math.abs((date1 - date2) / oneDay));
+
+    var years = Math.floor(diffDays / 365);
+    var months = Math.floor((diffDays % 365) / 30);
+
+    return { years, months };
+}
+
+function displayDateDiff(years, months) {
+    if (years > 0) {
+        return `${years} years and ${months} months`;
+    } else {
+        return `${months} months`;
+    }
+
+}
+
+// date of joining the company
+let date1 = new Date('2022-01-03');
+// current date
+let date2 = new Date();
+var { years, months } = getDateDifference(date1, date2);
+document.querySelector('.experience-span').innerHTML = displayDateDiff(years, months);
+
+date1 = new Date('2023-12-11');
+var { years, months } = getDateDifference(date1, date2);
+document.querySelector('.current-org-exp').innerHTML = displayDateDiff(years, months);
+
+
